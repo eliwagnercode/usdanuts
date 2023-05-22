@@ -10,7 +10,7 @@ def get_url(query,
               API_KEY="DEMO_KEY", 
               pageNumber=1):
   query, dataType, API_KEY, pageNumber = \
-  str(query), str(dataType), str(API_KEY), str(pageNumber)
+  str(query), str(dataType).replace(" ",""), str(API_KEY), str(pageNumber)
   url = f"https://api.nal.usda.gov/fdc/v1/foods/search?api_key={API_KEY}"\
         f"&sortBy=publishedDate&sortOrder=desc&pageSize=100"\
         f"&dataType={dataType}&pageNumber={pageNumber}&query={query}"
@@ -79,5 +79,5 @@ def get_df(query,
 # Accepts Pandas DataFrame and optional filename prefix
 # Exports Pandas DataFrame as CSV
 def get_csv(df,prefix=""):
-  prefix = str(prefix)
-  df.to_csv(f"FDC_Search_{datetime.datetime.now()}.csv",index=False)
+  prefix = str(prefix) + "_" if prefix != "" else ""
+  df.to_csv(f"{prefix}FDC_Search_{datetime.datetime.now()}.csv",index=False)
