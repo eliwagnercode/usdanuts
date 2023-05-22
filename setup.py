@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import codecs
 import os
 
-VERSION = '0.0.3'
+VERSION = '0.0.5'
 DESCRIPTION = 'Calls USDA FoodData Central API for food nutrient data and parses responses.'
 
 # Setting up
